@@ -1,0 +1,37 @@
+*.pyc
+*.pyo
+
+# Common IDEs
+*.swp
+.idea/
+.vagrant/
+.buildpath
+.settings
+atlassian-ide-plugin.xml
+.project
+.pydevproject
+.installed.cfg
+*.sublime-project
+*.sublime-workspace
+*.ropeproject
+
+static/client/*
+!static/client/.empty
+env/
+.env
+*.*~
+
+additional_settings.py
+dev_settings.py
+
+# SQLite
+*.sqlite*
+*.db
+
+# Logs
+*.log*
+
+*.pid
+client/bower_components/*
+client/node_modules/*
+.samples

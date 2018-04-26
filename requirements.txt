@@ -1,0 +1,11 @@
+Django==1.11.12
+django-push-notifications==1.6.0
+django-filter==1.1.0
+django-import-export==1.0.0
+djangorestframework==3.8.2
+djangorestframework-jwt==1.11.0
+psycopg2==2.7.4
+coreapi==2.3.3
+celery==4.1.0
+django-celery-results==1.0.1
+mock==2.0.0
