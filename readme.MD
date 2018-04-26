@@ -1,7 +1,8 @@
-To store the history I used a DB trigger, because the project is small. It works faster than an additional query to
-add a record to the history table. For big projects I usually use django-revertion app. It enables to recover
-removed objects, speed up development, but slower than triggers. The trigger is updated by the post migrate
-signal, because it eases development - I don't need to create a migration every time I need to change the trigger.
+To store the history I used a DB trigger, because the project is small. It works faster, because it doesn't spawn an
+additional query for add a record to the history table. For big projects I usually use django-revertion app. It
+enables to recover removed objects, speed up development, but slower than triggers. The trigger is updated by the post
+migrate signal, because it eases development - I don't need to create a migration every time I need to change the
+trigger.
 
 To send push notifications I used django-push-notifications app.
 
@@ -22,3 +23,5 @@ for each module each in a separate file and cover as much code as possible.
 For authentication I used djangorestframework-jwt. I used it in my recent project and decided why not to use it here.
 
 Also I exposed an URL for documentation.
+
+For Django projects I use 119 symbols as max line size.
