@@ -10,10 +10,12 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from comments import tasks
-from export import SUPPORTED_FORMATS
 from filters import CommentFilter
 import models
 import serializers
+
+
+SUPPORTED_FORMATS = ('xml',)
 
 
 SQL_GET_CHILDREN = r"""

@@ -149,31 +149,19 @@ JWT_AUTH = {
     'JWT_VERIFY_EXPIRATION': False  # for development purposes only
 }
 
-COMMENT_MODELS = {
-    'article': ('comments', 'Article'),
-    'comment': ('comments', 'Comment')
-}
-
 CELERY_QUEUES = {
     'high': {'binding_key': 'user.created'},
     'default': {'binding_key': 'default'}
 }
 
-# CELERY_QUEUES = (
-#     Queue('high', Exchange('high'), routing_key='high'),
-#     Queue('normal', Exchange('normal'), routing_key='normal'),
-#     Queue('low', Exchange('low'), routing_key='low'),
-# )
-CELERY_DEFAULT_QUEUE = 'normal'
-CELERY_DEFAULT_EXCHANGE = 'normal'
-CELERY_DEFAULT_ROUTING_KEY = 'normal'
 CELERY_ROUTES = {
     # -- HIGH PRIORITY QUEUE -- #
-    'myapp.tasks.check_payment_status': {'queue': 'high'},
+    'comments.tasks.notify': {'queue': 'high'},
     # -- LOW PRIORITY QUEUE -- #
-    'myapp.tasks.close_session': {'queue': 'low'},
+    'comments.tasks.export': {'queue': 'default'},
 }
 CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'amqp://127.0.0.1'
 
 PUSH_NOTIFICATIONS_SETTINGS = {
     "FCM_API_KEY": "[your api key]",
@@ -184,26 +172,4 @@ PUSH_NOTIFICATIONS_SETTINGS = {
     "WNS_SECRET_KEY": "[your app secret key, e.g.: 'KDiejnLKDUWodsjmewuSZkk']",
     "WP_PRIVATE_KEY": "/path/to/your/private.pem",
     "WP_CLAIMS": {'sub': "mailto: development@example.com"}
-}
-
-LOGGING = {
-    'version': 1,
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        }
-    },
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-        }
-    },
-    'loggers': {
-        'django.db.backends': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-        }
-    }
 }
